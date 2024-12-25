@@ -24,11 +24,49 @@ module.exports = class UsersController {
 
         res.cookie('token', token, { httpOnly: true });
 
-        res.render('home', { username: user.name });
+        res.render('home', { username: user.username });
     }
     
     static logout(req, res) {
         res.clearCookie('token');
         res.redirect('/');
+    }
+
+    static registerForm(req, res){
+        res.render('users/registerForm');
+    }
+
+    static async register(req, res) {
+        const { username, email, password, confirm } = req.body;
+    
+        if (password !== confirm) {
+            return res.status(400).send('As senhas não coincidem');
+        }
+    
+        try {
+            const emailExists = await User.findOne({ email });
+            if (emailExists) {
+                return res.status(400).send('Email já registrado');
+            }
+    
+            const usernameExists = await User.findOne({ username });
+            if (usernameExists) {
+                return res.status(400).send('Nome de usuário já registrado');
+            }
+    
+            // Criando o novo usuário
+            const newUser = new User({
+                username,
+                email,
+                password,
+            });
+    
+            await newUser.save();
+    
+            res.redirect('/auth/login');
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('Erro ao registrar o usuário');
+        }
     }
 }

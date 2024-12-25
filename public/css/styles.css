@@ -63,13 +63,13 @@ input[type="search"]{
 }
 
 /* cadastro ou login */
-input[type="email"], input[type="password"]{
+input[type="email"], input[type="password"], input[type="text"]{
     padding: 10px;
     border: none;
     background-color: var(--dark-40);
 }
 
-input[type="email"]:focus, input[type="password"]:focus{
+input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focus{
     background-color: transparent;
 }
 
