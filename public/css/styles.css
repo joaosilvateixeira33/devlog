@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Space+Grotesk:wght@300..700&display=swap');
+
+:root{
+    --brand-color: #E07B67;
+    --dark-10: #121214;
+    --dark-20: #17171A;
+    --dark-30: #202024;
+    --dark-40: #252529;
+    --dark-50: #AFABB6;
+    --dark-60: #FFFFFF;
+    --font-text: 'Space Grotesk', sans-serif;
+    --font-title: 'Inter', sans-serif;
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+    box-sizing: border-box;
+    background-color: var(--dark-10);
+    color: var(--dark-60) !important;
+}
+
+section{
+    padding: 40px;
+}
+
+/* Header  */
+header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-brand{
+    font-family: var(--font-title) !important;
+    font-weight: 700 !important;
+    font-size: 2.5em !important;
+}
+
+.custom-brand>.mark-header{
+    color: var(--brand-color) !important;
+}
+
+.navbar-toggler-icon{
+    background-image: url('../images/menu.svg') !important;
+}
+
+/* Posts */
+
+.search-container{
+    display: flex;
+    justify-content: center;
+}
+
+input[type="search"]{
+    padding: 10px;
+    border: none;
+    background-color: var(--dark-40);
+    width: 45vw;
+}
+
+/* cadastro ou login */
+input[type="email"], input[type="password"]{
+    padding: 10px;
+    border: none;
+    background-color: var(--dark-40);
+}
+
+input[type="email"]:focus, input[type="password"]:focus{
+    background-color: transparent;
+}
+
+button[type="submit"]{
+    background-color: var(--brand-color) !important;
+    border: none;
+    font-weight: 700;
+}
+
+button[type="submit"]:hover{
+    background-color: #bc6a5a !important;
+}
