@@ -27,11 +27,9 @@ section{
 }
 
 /* Header  */
-header{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
+.custom-container{
+    gap: 10px;
 }
 
 .custom-brand{
@@ -48,6 +46,11 @@ header{
     background-image: url('../images/menu.svg') !important;
 }
 
+@media (min-width: 992px) { 
+    .custom-container {
+      gap: 500px;
+    }
+}
 /* Posts */
 
 .search-container{
@@ -61,6 +64,7 @@ input[type="search"]{
     background-color: var(--dark-40);
     width: 45vw;
 }
+
 
 /* cadastro ou login */
 input[type="email"], input[type="password"], input[type="text"]{

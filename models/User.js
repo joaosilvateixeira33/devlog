@@ -3,9 +3,17 @@ const bcrypt = require('bcryptjs');
 
 // Modelo de Usuário
 const userSchema = new mongoose.Schema({
-  username: { type: String, required: true },
+  username: { 
+    type: String, 
+    required: true,
+    maxlength: [8, 'O nome de usuário deve ter no máximo 8 caracteres'],
+  },
   email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
+  password: { 
+    type: String, 
+    required: true,
+    maxlength: [8, 'A senha deve conter no maximo 8 caracteres']
+  },
   role: { type: String, default: "user" },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },

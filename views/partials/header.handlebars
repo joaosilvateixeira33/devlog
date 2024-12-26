@@ -1,4 +1,4 @@
-<header>
+<header class="d-flex align-items-center justify-content-center">
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid custom-container">
       <a class="navbar-brand custom-brand" href="/"><span class="mark-header">Dev</span>log</a>
@@ -10,7 +10,7 @@
         <ul class="navbar-nav">
           {{#if username}} <!-- Se o username existir (usuário logado) -->
             <li class="nav-item">
-              <a class="nav-link" href="#">Olá, {{username}}</a>
+              <a class="nav-link" href="/auth/dashboard">Olá, {{username}}</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/auth/logout">Sair</a>

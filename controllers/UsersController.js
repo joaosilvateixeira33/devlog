@@ -54,7 +54,6 @@ module.exports = class UsersController {
                 return res.status(400).send('Nome de usuário já registrado');
             }
     
-            // Criando o novo usuário
             const newUser = new User({
                 username,
                 email,
@@ -68,5 +67,23 @@ module.exports = class UsersController {
             console.error(error);
             res.status(500).send('Erro ao registrar o usuário');
         }
+    }
+    static async dashboard(req, res) { 
+        try { 
+            const token = req.cookies.token; 
+            if (!token) { 
+                return res.redirect('/login'); 
+            } 
+            const decoded = jwt.verify(token, process.env.JWT_SECRET); 
+            const user = await User.findById(decoded.id); 
+            if (!user) { 
+                console.log('Usuário não encontrado. Redirecionando para o login...'); 
+                return res.redirect('/auth/login'); 
+            } 
+            res.render('users/dashboard', { username: user.username });
+        } catch (error) { 
+            console.error('Erro ao acessar o dashboard:', error); 
+            return res.redirect('/auth/login'); 
+        } 
     }
 }
